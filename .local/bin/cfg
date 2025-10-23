@@ -1,0 +1,29 @@
+#!/bin/sh
+editor=nvim
+args=$(getopt --options 'c::' --longoptions 'code::' -- "${@}") || exit 1
+eval "set -- ${args}"
+
+while true; do
+    case "${1}" in
+        (-c | --code)
+            editor="code -n"
+            shift 2
+        ;;
+        (--)
+            shift
+            break
+        ;;
+        (*)
+            exit 1    # error
+        ;;
+    esac
+done
+
+file=""
+case "${1}" in
+    ("cfg") file="$0" ;;
+    ("hypr" | "hyprland") file="$HOME/.config/hypr/hyprland.conf" ;;
+    ("lock" | "hyprlock") file="$HOME/.config/hypr/hyprlock.conf" ;;
+    ("kitty") file="$HOME/.config/kitty/kitty.conf" ;;
+esac
+$editor $file

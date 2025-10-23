@@ -1,0 +1,2 @@
+# dots, etc.
+this repo houses all the configuration files + extra programs and such (for example, my rust shell prompt) that i use on my computer. `./fetcher.js` is the script i use to generate this repo

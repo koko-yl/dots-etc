@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+let fs = require("fs");
+let cat = p => fs.readFileSync(p).toString();
+let ls = () => fs.readdirSync(".");
+Object.defineProperties(Array.prototype, {
+    counts: {
+        value: function () {
+            return this.reduce((a, n) => {
+                a[n] = (a[n] || 0) + 1;
+                return a;
+            }, {});
+        },
+    },
+    nonempty: { value: function() { return this.filter(x => x)}}
+});
+Object.defineProperties(String.prototype, {
+    lines: {
+        value: function () {
+            return this.split("\n");
+        },
+    },
+    int: { value: function(n) { return parseInt(this, n); }}
+});
+Object.defineProperties(Number.prototype, {
+    hex: {
+        value: function (n) {
+            return n ? ('0'.repeat(n) + this.toString(16)).slice(-1 * n): this.toString(16);
+        },
+    },
+});
+if(process.argv.length > 2) {
+    console.log(eval(process.argv[2]));
+    process.exit();
+}
+let repl = require("repl").start({ useGlobal: true,  });
+[cat, ls].map(m => (repl.context[m.name] = m));
