@@ -8,7 +8,7 @@ this repo houses all the configuration files + extra programs and such (for exam
 │   └── bin
 │       ├── cfg    # lets me edit my configs more easily 
 │       └── n      # nodejs repl with some added functions for when i don't
-│                  #   want to google awk syntax
+│                  #   when i don't want to google awk syntax
 ├── fetcher.js     # generator script
 ├── p              # shell prompt
 ├── README.md
