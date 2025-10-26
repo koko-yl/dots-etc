@@ -5,8 +5,9 @@ let dots = [
     "~/.local/bin/cfg",
     "~/.local/bin/n",
     "~/.zshrc",
-    "~/zshc.js",
+    "~/ff.js",
     "~/p",
+    "~/zshc.js",
 ];
 
 let reset = dir =>
