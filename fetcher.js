@@ -2,6 +2,8 @@ import fs from "fs";
 let dots = [
     "~/.config/hypr",
     "~/.config/kitty/kitty.conf",
+    "~/.config/vesktop/settings.json",
+    "~/.config/vesktop/settings",
     "~/.local/bin/cfg",
     "~/.local/bin/n",
     "~/.zshrc",
@@ -13,7 +15,6 @@ let dots = [
 let reset = dir =>
     fs.readdirSync(dir).forEach(e => {
         let stat = fs.lstatSync(`${dir}/${e}`);
-        // if(stat.isSymbolicLink()) fs.unlinkSync(`${dir}/${e}`);
         if (stat.isDirectory()) {
             if (`${dir}/${e}` == "./.git") return;
             reset(`${dir}/${e}`);
@@ -46,14 +47,10 @@ function copy(old, newp) {
                 .filter(x => x);
             files = files.filter(f => !gitignore.includes(f));
         }
-        // console.log(files);
         files.map(p => copy(`${old}/${p}`, `${newp}/${p}`));
     } else {
         let root = newp.split(/(.+)\//)[1];
         if(!fs.existsSync(root)) fs.mkdirSync(root, { recursive: true })
         fs.copyFileSync(old, newp);
     }
-    // let root = newpath.split(/(.+)\//)[1];
-    // if(root != "." && !fs.existsSync(root)) fs.mkdirSync(root, { recursive: true });
-    // if(fs.lstatSync(""))
 }

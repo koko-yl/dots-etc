@@ -2,6 +2,11 @@
 let fs = require("fs");
 let cat = p => fs.readFileSync(p).toString();
 let ls = () => fs.readdirSync(".");
+Object.defineProperties(Object.prototype, {
+    keys: { value: function() { return Object.keys(this); }},
+    values: { value: function() { return Object.values(this); }},
+    entries: { value: function() { return Object.entries(this); }}
+});
 Object.defineProperties(Array.prototype, {
     counts: {
         value: function () {
@@ -11,6 +16,7 @@ Object.defineProperties(Array.prototype, {
             }, {});
         },
     },
+    set: { value: function () { return [...new Set(this)] }},
     nonempty: { value: function() { return this.filter(x => x)}}
 });
 Object.defineProperties(String.prototype, {
@@ -19,7 +25,8 @@ Object.defineProperties(String.prototype, {
             return this.split("\n");
         },
     },
-    int: { value: function(n) { return parseInt(this, n); }}
+    int: { value: function(n) { return parseInt(this, n); }},
+    json: { value: function () { return JSON.parse(this) }}
 });
 Object.defineProperties(Number.prototype, {
     hex: {

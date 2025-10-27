@@ -1,0 +1,163 @@
+:root {
+	--red-400: #66c6d2;
+	--background-base-lowest: #0000 !important;
+	--background-base-lower: #0000 !important;
+	--background-base-low: #0000 !important;
+	--background-gradient-highest: #0000;
+	--background-gradient-high: #0000;
+	--text-default: #dedede;
+	--custom-app-top-bar-height: 0px;
+	--font-primary: 'Jost*';
+}
+
+/* transparency broke some modals so we fix those */
+.inner_c0bea0 {
+	background-color: #212121cc !important;
+}
+
+/* remove top bar */
+.bar_c38106 {
+	display: absolute;
+	margin-left: auto;
+	flex-direction: column;
+	height: 200px;
+	width: 32px;
+	opacity: 0.5;
+	z-index: 100;
+}
+.anchor_edefb8[href="https://support.discord.com"], .title_c38106 {
+	display: none;
+}
+.trailing_c38106 {
+	margin-top: 48px;
+	margin-bottom: auto;
+	align-content: flex-start;
+	flex-direction: column;
+}
+
+/* no server banner */
+.animatedContainer_f37cb1,
+.content_d125d2[aria-label="Channels"] > div[aria-hidden="true"],
+.headerEllipseBackdrop_f37cb1,
+.headerEllipseForeground_f37cb1
+{
+	display: none;
+}
+
+/* some outline stuff */
+.panels_c48ade {
+	border: 1px solid #fff2;
+}
+
+/* more transparency stuff */
+.theme-dark {
+	background-color: #0000 !important;
+}
+
+/* get rid of stickers/gifts/etc. EXCEPT emote menu */
+div.buttons__74017 > div:not(:has(> div[aria-label='Select emoji'])), div.buttons__74017 > button {
+	display: none !important;
+}
+
+/* get rid of nitro stuff */
+.avatarDecoration_c19a55, 
+.profileEffects__01370, 
+.avatarDecoration__44b0c, /* avatar decoration */
+.chipletContainerInner__10651, /* guild tags */
+.videoContainer__4bbc6, /* member list thing */ 
+.wallpaperContainer__5fa7b/* group chat wallpaper */
+{
+  display: none;
+}
+.container__4bbc6 {
+	background: none !important; /* get rid of gradient thing in member list */
+}
+
+/* activity thing at the top of memberlist */
+div[aria-label='Members'] > div:not([data-list-item-id^="members"]) * {
+	height: 0 !important;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.membersGroup_c8ffbb:has(span[role=button]) /* header */ {
+	height: 0px !important;
+	display: none;
+}
+
+/* flag_mq/flag_aq (broken - fix me) */
+/* img[data-name=":flag_mq:"] {
+	content: url('https://raw.githubusercontent.com/koko-yl/website/refs/heads/main/bin/flag_mq.svg');
+}
+img[data-name=":flag_aq:"] {
+	content: url('https://raw.githubusercontent.com/koko-yl/website/refs/heads/main/bin/flag_aq.svg');
+} */
+
+/* no background on mention */
+.mention {
+	background: none !important;
+	color: #66c6d2 !important;
+}
+
+/* fix makonede's pronouns bc discord caches them weirdly */
+.outer_c0bea0:has(.overlay__75742 > .avatar__44b0c[src*="708009771109711902"]) [aria-label="he/they"] .overflow__82b15::before,
+.outer_c0bea0:has(.overlay__75742 > .avatar__44b0c[src*="708009771109711902"]) .pronounsText__63ed3::before
+ {
+	visibility: visible;;
+    content: "she/they";
+} 
+.message__5126c:has(.avatar_c19a55[src*="708009771109711902"]) [aria-label="Pronouns"],
+.outer_c0bea0:has(.overlay__75742 > .avatar__44b0c[src*="708009771109711902"]) .pronounsText__63ed3 {
+    visibility: hidden;
+}
+.message__5126c:has(.avatar_c19a55[src*="708009771109711902"]) [aria-label="Pronouns"]::before {
+    visibility: visible;
+    content: "• she/they";
+}
+
+/* better chat */
+:root {
+	--custom-channel-textarea-text-area-height: 2.5em;
+}
+.form_f75fb0 {
+	margin-top: -20px;
+	border-top: 1px solid #fff2;;
+}
+/* fix + button */
+.attachWrapper__0923f {
+	padding: 0;
+}
+
+.live_a7acae {
+	color: #333;
+}
+
+/* make gifs into emotes */
+div.imageWrapper_af017a:has(a[href*="//tenor.com"]),
+div.imageWrapper_af017a:has(a[href*=".gif"])
+ {
+	width: 48px !important;
+	height: 48px !important;
+}
+
+/* ^ but with every video saria sends */
+div.message__5126c:has(.avatar_c19a55[src*="596608640698286090"]) div.imageWrapper_af017a:has(video)  {
+	width: unset !important;
+	height: 48px !important;
+}
+div.message__5126c:has(.avatar_c19a55[src*="596608640698286090"]) div.imageWrapper_af017a:has(video) .wrapper_cf09d8 .cover__6eb54  {
+	opacity: 0;
+}
+
+.groupStart__5126c:has(.blockedSystemMessage__7a70a) {
+	display: none;
+}
+
+/* hljs */
+.hljs {
+	font-family: "FiraCode Nerd Font";
+	font-feature-settings: "ss01", "ss08";
+	background: none !important;
+  	color: #abb2bf !important;
+}
+code .hljs-keyword{color:#cba6f7 !important}code .hljs-built_in{color:#f38ba8 !important}code .hljs-type{color:#f9e2af !important}code .hljs-literal{color:#fab387 !important}code .hljs-number{color:#fab387 !important}code .hljs-operator{color:#89dceb !important}code .hljs-punctuation{color:#bac2de !important}code .hljs-property{color:#94e2d5 !important}code .hljs-regexp{color:#f5c2e7 !important}code .hljs-string{color:#a6e3a1 !important}code .hljs-char.escape_{color:#a6e3a1 !important}code .hljs-subst{color:#a6adc8 !important}code .hljs-symbol{color:#f2cdcd !important}code .hljs-variable{color:#cba6f7 !important}code .hljs-variable.language_{color:#cba6f7 !important}code .hljs-variable.constant_{color:#fab387 !important}code .hljs-title{color:#89b4fa !important}code .hljs-title.class_{color:#f9e2af !important}code .hljs-title.function_{color:#89b4fa !important}code .hljs-params{color:#cdd6f4 !important}code .hljs-comment{color:#9399b2 !important}code .hljs-doctag{color:#f38ba8 !important}code .hljs-meta{color:#fab387 !important}code .hljs-section{color:#89b4fa !important}code .hljs-tag{color:#94e2d5 !important}code .hljs-name{color:#cba6f7 !important}code .hljs-attr{color:#89b4fa !important}code .hljs-attribute{color:#a6e3a1 !important}code .hljs-bullet{color:#94e2d5 !important}code .hljs-code{color:#a6e3a1 !important}code .hljs-emphasis{color:#f38ba8 !important;font-style:italic !important}code .hljs-strong{color:#f38ba8 !important;font-weight:bold !important}code .hljs-formula{color:#94e2d5 !important}code .hljs-link{color:#74c7ec !important;font-style:italic !important}code .hljs-quote{color:#a6e3a1 !important;font-style:italic !important}code .hljs-selector-tag{color:#f9e2af !important}code .hljs-selector-id{color:#89b4fa !important}code .hljs-selector-class{color:#94e2d5 !important}code .hljs-selector-attr{color:#cba6f7 !important}code .hljs-selector-pseudo{color:#94e2d5 !important}code .hljs-template-tag{color:#f2cdcd !important}code .hljs-template-variable{color:#f2cdcd !important}code .hljs-addition{color:#a6e3a1 !important;background:rgba(166,227,161,.15) !important}code .hljs-deletion{color:#f38ba8 !important;background:rgba(243,139,168,.15) !important}
